@@ -13,6 +13,11 @@
     <%= link_to "Delete", list_task_path(@list, task),
     :data => {:confirm => "Are you sure?",
       :method => "delete"} %>
+      <% if task.done %>
+        <button> <%= link_to "In Progress", list_task_finish_task_path(@list, task) %> </button>
+      <% else %>
+        <button> <%= link_to "Done", list_task_finish_task_path(@list, task) %> </button>
+      <% end %>
     </li>
     <% end %>
   </ul>

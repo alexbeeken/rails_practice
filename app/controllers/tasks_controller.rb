@@ -37,6 +37,13 @@ class TasksController < ApplicationController
     end
   end
 
+  def finish_task
+    @task = Task.find(params[:task_id])
+    find_task_list
+    @task.mark_done
+    redirect_to list_path(@list)
+  end
+
   private
 
     def task_params
